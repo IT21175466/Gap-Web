@@ -28,6 +28,7 @@ class Login extends Component {
   };
   
   handleLogin = () => {
+    alert('Login button clicked!');
   };
 
   render() {
@@ -67,7 +68,7 @@ class Login extends Component {
               />
             </div>
             <h4>Forgot Password?</h4>
-            <button type="button" onClick={this.handleLogin}>Login</button>
+            <button type="button" onClick={this.handleLogin} className="login-button">Login</button>
             <h5>Or, login with</h5>
             <div className='Icon' >
             <img src={Google_image}  alt="Image 1" />
