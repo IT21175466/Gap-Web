@@ -1,0 +1,24 @@
+.custom-containe {
+    background-color: #009FFD; 
+    color: aliceblue;
+   
+  }
+  
+.custom-nav-link {
+    color: #ffffff;
+    font-size: 24px;
+    font-weight: 600; 
+    margin: 4vh;
+  
+  }
+  .custom-Logo-link {
+    color: #ffffff; 
+    font-size:36px ;
+    /* font-family: Poppins; */
+    font-weight: 700;
+  }
+ 
+  .custom-dropdown-item {
+    color: #007BFF; 
+  }
+
