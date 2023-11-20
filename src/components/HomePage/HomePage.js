@@ -11,7 +11,7 @@ const HomePage = () => {
           <div className='col'>
             <h1 className='custom-text-h1'>Explore The World And Discover Your Potential</h1>
             <p className='custom-text-p'>Connect with industry pros, discover opportunities, and showcase your skills. Join a thriving community, and empower your future. Your journey starts here!</p>
-            <button class="btn custom-button my-2 my-sm-3" type="submit">Register for free</button>
+            <button class="btn custom-button3 my-2 my-sm-3" type="submit">Register for free</button>
 
           </div>
           <div className='col'>

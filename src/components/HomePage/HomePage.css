@@ -1,31 +1,35 @@
-.custom-button {
+.custom-button3 {
     background-color: #2a2a722a;
     color: #ffffff; 
     border-color: #ffffff;
     border-width: 3px;
     font-weight: 700; 
     font-size: 24px;
+    padding-left: 5vh;
+    padding-right: 5vh;
   }
-  .custom-button:hover {
-    background-color: #2a2a72;
-    border-color: #01c7fd;
-    color: #01c7fd;
 
+  .custom-button3:hover {
+    background-color: #ffffff;
+    border-color: #ffffff;
+    color: #2A2A72;
   }
+
   .custom-container {
     background: linear-gradient(to bottom, #009FFD, #2A2A72); 
   }
   
   .custom-text-h1{
     color: #ffffff;
-    font-size: 48px;
+    font-size: 64px;
     font-weight: 700;
     padding-top: 60px;
   }
+  
   .custom-text-p{
     color: #ffffff;
-    font-size: 20px;
-    font-weight: 500;
+    font-size: 22px;
+    font-weight: 300;
     padding-top: 15px;
   }
 

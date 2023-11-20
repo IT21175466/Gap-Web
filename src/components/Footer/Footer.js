@@ -1,20 +1,22 @@
 
 import React from 'react'
 import '../Footer/Footer.css';
+import GAP_Image from '../Navbar/GAP_BG.png'
+<link rel="stylesheet" href="https://unpkg.com/ionicons@5.0.1/dist/css/ionicons.min.css" integrity="..."/>
+
 
 const Footer = () => {
     return (
+        
         <><div class="footer-dark">
             <footer>
                 <div class="container">
                     <div class="row">
                         <div class="col-md-4 footer-column">
-                            <h3>Logo</h3>
-                            <ul>
-                                <li><a href="#">Web design</a></li>
-                                <li><a href="#">Development</a></li>
-                                <li><a href="#">Hosting</a></li>
-                            </ul>
+                            <a className="navbar-brand" href="#">
+                                <img src={GAP_Image} height="70" alt="" />
+                            </a>
+
                         </div>
                         <div class="col-md-4 footer-column">
                             <h3>Quick Links</h3>
