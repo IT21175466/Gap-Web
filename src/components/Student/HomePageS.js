@@ -1,17 +1,3 @@
-// import PropTypes from 'prop-types'
-// import React, { Component } from 'react'
-
-// export class HomePage extends Component {
-//   static propTypes = {}
-
-//   render() {
-//     return (
-//       <div>HomePage</div>
-//     )
-//   }
-// }
-
-// export default HomePage
 import Card from 'react-bootstrap/Card';
 import CardGroup from 'react-bootstrap/CardGroup';
 
@@ -21,18 +7,18 @@ import Button from 'react-bootstrap/Button';
 import InputGroup from 'react-bootstrap/InputGroup';
 
 import Container from 'react-bootstrap/Container';
-import Homepage_image from '../Student/homepage.png';
+import Homepage_image from '../Student/Img/homepage.png';
 import '../Student/HomeS.css';
 import GAP_Image from '../Navbar/GAP_BG.png';
-import Student_Image from '../Student/Student.png';
-import Mentor1_Image from '../Student/mentor1.png';
-import Mentor2_Image from '../Student/mentor2.png';
-import Mentor3_Image from '../Student/mentor3.png';
-import Mentor4_Image from '../Student/mentor4.png';
-import Webinar1_Image from '../Student/webinar1.png';
-import Webinar2_Image from '../Student/webinar2.png';
-import Webinar3_Image from '../Student/webinar3.png';
-import Webinar4_Image from '../Student/webinar4.png';
+import Student_Image from '../Student/Img/Student.png';
+import Mentor1_Image from '../Student/Img/mentor1.png';
+import Mentor2_Image from '../Student/Img/mentor2.png';
+import Mentor3_Image from '../Student/Img/mentor3.png';
+import Mentor4_Image from '../Student/Img/mentor4.png';
+import Webinar1_Image from '../Student/Img/webinar1.png';
+import Webinar2_Image from '../Student/Img/webinar2.png';
+import Webinar3_Image from '../Student/Img/webinar3.png';
+import Webinar4_Image from '../Student/Img/webinar4.png';
 import Col from 'react-bootstrap/Col';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Row from 'react-bootstrap/Row';

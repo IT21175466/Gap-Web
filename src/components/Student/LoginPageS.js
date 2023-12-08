@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Register_image from '../Student/register.png';
+import Register_image from '../Student/Img/register.png';
 import Apple_image from '../LoginPage/apple.png';
 import Google_image from '../LoginPage/google.png';
 import Linkedin_image from '../LoginPage/linkedin.png';
