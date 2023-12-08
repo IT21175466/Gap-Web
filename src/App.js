@@ -47,12 +47,14 @@ const App = () => {
          <HomePageS />
         
          <ProHomeNotMen />
+         <ProHome />
          <ProNoDetailsProfie/>
-          <ProDetailsProfile/>
+          
                 <ProBankDetails />
       <Prologin />
           <ProDetailsProfileOtherUses />*/}
-      <ProHome />
+
+      <ProDetailsProfile />
     </>
   );
 };

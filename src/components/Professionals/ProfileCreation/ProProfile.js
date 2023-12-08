@@ -44,7 +44,6 @@ function ProProfile() {
                         style={{ width: "40px", cursor: "pointer" }}
                       />
                     </Col>
-            
 
                     <br></br>
                     <FloatingLabel
@@ -52,7 +51,7 @@ function ProProfile() {
                       label="Profession"
                     >
                       <Form.Control
-                         type="Text"
+                        type="Text"
                         placeholder="Profession"
                         style={{
                           border: "1px solid rgba(0, 0, 0, 0.51)",
@@ -79,7 +78,7 @@ function ProProfile() {
                       label="Linkedin Profile Link"
                     >
                       <Form.Control
-                         type="Text"
+                        type="Text"
                         placeholder="Linkedin Profile Link"
                         style={{
                           border: "1px solid rgba(0, 0, 0, 0.51)",

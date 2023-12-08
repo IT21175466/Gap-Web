@@ -101,7 +101,6 @@
 }
 .card {
   flex-direction: row;
-  width: 100%;
   display: flex;
   padding: 26px 30px 26px 29px;
   justify-content: center;
@@ -149,7 +148,7 @@
   font-weight: 500;
   line-height: 129.688%; /* 25.938px */
 }
-.card-para2{
+.card-para2 {
   color: #000;
   font-family: Poppins;
   font-size: 20px;

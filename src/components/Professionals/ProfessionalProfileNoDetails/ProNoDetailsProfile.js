@@ -1,4 +1,4 @@
-import React from "react";
+import { React, useState } from "react";
 import Navbar from "react-bootstrap/Navbar";
 import "./HomeS.css";
 import GAP_Image from "./img/GAP_BG.png";
@@ -10,9 +10,84 @@ import Tab from "react-bootstrap/Tab";
 import prolog from "./img/prologo.png";
 import Image from "react-bootstrap/Image";
 import pen from "./img/pen.png";
+import Form from "react-bootstrap/Form";
 import Col from "react-bootstrap/Col";
+import Modal from "react-bootstrap/Modal";
+import { Container } from "react-bootstrap";
+import InputGroup from "react-bootstrap/InputGroup";
 
 function ProDetailsProfile() {
+  /*Photo Change Model*/
+  const [show, setShow] = useState(false);
+
+  /*Social Media Model Start*/
+  const [show2, setShow2] = useState(false);
+
+  /*Edit personal details Model*/
+  const [show3, setShow3] = useState(false);
+
+  /*Academic qualification Model*/
+  const [show4, setShow4] = useState(false);
+
+  /*Delete Model */
+  const [show5, setShow5] = useState(false);
+
+  /*License Model */
+  const [show6, setShow6] = useState(false);
+
+  /*professional experience Model */
+  const [show7, setShow7] = useState(false);
+
+  /*volunteering */
+  const [show8, setShow8] = useState(false);
+  /*Company details*/
+  const [show9, setShow9] = useState(false);
+
+  /*Photo Change Model*/
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+  /*Social Media Model Start*/
+  const handleClose2 = () => setShow2(false);
+  const handleShow2 = () => setShow2(true);
+
+  /*Edit personal details Model*/
+  const handleClose3 = () => setShow3(false);
+  const handleShow3 = () => setShow3(true);
+
+  /*Academic qualification Model*/
+  const handleClose4 = () => setShow4(false);
+  const handleShow4 = () => setShow4(true);
+
+  /*Delete Model */
+  const handleClose5 = () => setShow5(false);
+  const handleShow5 = () => setShow5(true);
+
+  /*License Model */
+  const handleClose6 = () => setShow6(false);
+  const handleShow6 = () => setShow6(true);
+
+  /*professional experience Model */
+  const handleClose7 = () => setShow7(false);
+  const handleShow7 = () => setShow7(true);
+
+  /*volunteering */
+  const handleClose8 = () => setShow8(false);
+  const handleShow8 = () => setShow8(true);
+
+  /*Company details*/
+  const handleClose9 = () => setShow9(false);
+  const handleShow9 = () => setShow9(true);
+
+  const [selectedImage, setSelectedImage] = useState(null);
+
+  const handleFileChange = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      setSelectedImage(URL.createObjectURL(file));
+    }
+  };
+
   return (
     <div>
       <div>
@@ -276,9 +351,267 @@ function ProDetailsProfile() {
                           top: "35%",
                           left: "50%",
                         }}
+                        onClick={handleShow}
                       />
                     </Col>
+                    {/*Photo Change Model Start*/}
+                    <Modal
+                      show={show}
+                      onHide={handleClose}
+                      aria-labelledby="example-custom-modal-styling-title"
+                    >
+                      <Modal.Header closeButton></Modal.Header>
 
+                      <Modal.Body>
+                        <Modal.Title
+                          id="example-custom-modal-styling-title"
+                          className="text-center"
+                        >
+                          <h1>Profile Picture</h1>
+                          <p>Change Profile Picture</p>
+                        </Modal.Title>
+                        <div className="p-7">
+                          <Container className="mt-2">
+                            <Row className="justify-content-center">
+                              <Col
+                                xs={12}
+                                md={6}
+                                lg={4}
+                                style={{
+                                  width: "100%",
+                                }}
+                              >
+                                <div className="text-center"></div>
+                                <br />
+                                <div className="text-center">
+                                  <Image
+                                    src={prolog}
+                                    roundedCircle
+                                    style={{
+                                      width: "150px",
+                                      height: "150px",
+                                      objectFit: "cover",
+                                    }}
+                                  />
+                                </div>
+                                <br />
+                                <hr />
+                                <Row>
+                                  <Col
+                                    xs={2}
+                                    className="text-left"
+                                    style={{
+                                      cursor: "pointer",
+                                    }}
+                                  >
+                                    <label htmlFor="fileInput">
+                                      <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        width="29"
+                                        height="27"
+                                        viewBox="0 0 29 27"
+                                        fill="none"
+                                        cursor="pointer"
+                                      >
+                                        <path
+                                          d="M24.4748 8.76935L21.6105 0.762355C21.3991 0.171244 20.7775 -0.142783 20.2259 0.0632531L1.1889 7.11538C0.637307 7.31999 0.358711 7.96368 0.571508 8.55479L3.58987 16.9966V12.4737C3.58987 10.4304 5.19705 8.76935 7.17383 8.76935H12.204L18.2029 4.49516L21.6734 8.76935H24.4748ZM27.433 11.3697H7.17383C7.0319 11.3694 6.89135 11.398 6.76045 11.4537C6.62954 11.5094 6.51092 11.591 6.41154 11.6939C6.31216 11.7967 6.23404 11.9187 6.18175 12.0526C6.12946 12.1865 6.10406 12.3297 6.10704 12.4737V25.859C6.10844 26.4899 6.58723 27 7.17383 27H27.433C28.021 27 28.4998 26.4899 28.4998 25.859V12.4737C28.5028 12.3297 28.4774 12.1865 28.4251 12.0526C28.3728 11.9187 28.2946 11.7967 28.1953 11.6939C28.0959 11.591 27.9773 11.5094 27.8464 11.4537C27.7155 11.398 27.5749 11.3694 27.433 11.3697ZM25.6998 24.1581H8.90001V21.3162L11.6776 15.6069L15.5527 20.4893L19.1899 16.7067L23.863 14.9945L25.6998 19.8953V24.1581Z"
+                                          fill="black"
+                                          fill-opacity="0.5"
+                                        />
+
+                                        {/* Gallery icon path */}
+                                      </svg>
+                                      <p style={{ textAlign: "center" }}>
+                                        Gallery
+                                      </p>
+                                    </label>
+                                    <input
+                                      id="fileInput"
+                                      type="file"
+                                      accept="image/*"
+                                      style={{ display: "none" }}
+                                      onChange={handleFileChange}
+                                    />
+                                  </Col>
+                                  <Col
+                                    xs={8}
+                                    className="text-center"
+                                    style={{
+                                      cursor: "pointer",
+                                    }}
+                                  >
+                                    <svg
+                                      xmlns="http://www.w3.org/2000/svg"
+                                      width="35"
+                                      height="27"
+                                      viewBox="0 0 35 27"
+                                      fill="none"
+                                    >
+                                      <path
+                                        d="M17.5009 19.6364C20.2121 19.6364 22.41 17.4385 22.41 14.7273C22.41 12.0161 20.2121 9.81824 17.5009 9.81824C14.7897 9.81824 12.5918 12.0161 12.5918 14.7273C12.5918 17.4385 14.7897 19.6364 17.5009 19.6364Z"
+                                        fill="black"
+                                        fill-opacity="0.5"
+                                      />
+                                      <path
+                                        d="M32.8411 4.90909H26.4746C26.2445 4.90909 25.9592 4.76028 25.7367 4.52557L23.6442 1.24261C22.7928 -2.92605e-07 22.4093 0 21.0286 0H13.9718C12.5911 0 12.1309 0 11.3584 1.24338L9.26364 4.52557C9.09336 4.71119 8.85404 4.90909 8.60245 4.90909V3.68182C8.60245 3.51907 8.5378 3.36299 8.42272 3.24791C8.30764 3.13283 8.15156 3.06818 7.98881 3.06818H4.92063C4.75789 3.06818 4.60181 3.13283 4.48673 3.24791C4.37165 3.36299 4.307 3.51907 4.307 3.68182V4.90909H2.15927C1.67103 4.90909 1.20279 5.10304 0.857549 5.44828C0.512312 5.79352 0.318359 6.26176 0.318359 6.75V25.1591C0.318359 25.6473 0.512312 26.1156 0.857549 26.4608C1.20279 26.806 1.67103 27 2.15927 27H32.8411C33.3293 27 33.7976 26.806 34.1428 26.4608C34.488 26.1156 34.682 25.6473 34.682 25.1591V6.75C34.682 6.26176 34.488 5.79352 34.1428 5.44828C33.7976 5.10304 33.3293 4.90909 32.8411 4.90909ZM17.8461 22.0832C16.3619 22.153 14.8913 21.772 13.6276 20.9905C12.3639 20.209 11.3662 19.0635 10.7655 17.7045C10.1648 16.3455 9.98936 14.8366 10.2621 13.376C10.5349 11.9154 11.2431 10.5715 12.2937 9.52083C13.3444 8.47019 14.6883 7.76196 16.1489 7.48921C17.6095 7.21645 19.1184 7.39194 20.4774 7.9926C21.8364 8.59326 22.982 9.591 23.7635 10.8547C24.5449 12.1184 24.9259 13.589 24.8561 15.0732C24.7682 16.904 24.0015 18.6364 22.7054 19.9325C21.4093 21.2286 19.6769 21.9953 17.8461 22.0832Z"
+                                        fill="black"
+                                        fill-opacity="0.5"
+                                      />
+                                    </svg>
+                                    <p>Camera</p>
+                                  </Col>
+                                  <Col
+                                    xs={2}
+                                    className="text-right"
+                                    style={{
+                                      cursor: "pointer",
+                                    }}
+                                    onClick={handleShow5}
+                                  >
+                                    <svg
+                                      xmlns="http://www.w3.org/2000/svg"
+                                      width="24"
+                                      height="27"
+                                      viewBox="0 0 24 27"
+                                      fill="none"
+                                    >
+                                      <path
+                                        d="M4.5 27C3.675 27 2.9685 26.706 2.3805 26.118C1.7925 25.53 1.499 24.824 1.5 24V4.5H0V1.5H7.5V0H16.5V1.5H24V4.5H22.5V24C22.5 24.825 22.206 25.5315 21.618 26.1195C21.03 26.7075 20.324 27.001 19.5 27H4.5ZM19.5 4.5H4.5V24H19.5V4.5ZM7.5 21H10.5V7.5H7.5V21ZM13.5 21H16.5V7.5H13.5V21Z"
+                                        fill="black"
+                                        fill-opacity="0.5"
+                                      />
+                                    </svg>
+                                    <p>Delete</p>
+                                  </Col>
+                                  {/*Delete Model Start*/}
+                                  <Modal
+                                    show={show5}
+                                    onHide={handleClose5}
+                                    aria-labelledby="example-custom-modal-styling-title"
+                                  >
+                                    <Modal.Header closeButton></Modal.Header>
+
+                                    <Modal.Body>
+                                      <div className="p-7">
+                                        <Container className="mt-2">
+                                          <Row className="justify-content-center">
+                                            <Col
+                                              xs={12}
+                                              md={6}
+                                              lg={4}
+                                              style={{
+                                                width: "100%",
+                                              }}
+                                            >
+                                              <div className="text-center"></div>
+                                              <br />
+                                              <div className="text-center">
+                                                <svg
+                                                  xmlns="http://www.w3.org/2000/svg"
+                                                  width="123"
+                                                  height="123"
+                                                  viewBox="0 0 123 123"
+                                                  fill="none"
+                                                >
+                                                  <circle
+                                                    cx="61.5"
+                                                    cy="61.5"
+                                                    r="61.5"
+                                                    fill="white"
+                                                  />
+                                                  <circle
+                                                    cx="61.5"
+                                                    cy="61.5"
+                                                    r="60"
+                                                    stroke="#CF1010"
+                                                    stroke-opacity="0.8"
+                                                    stroke-width="3"
+                                                  />
+                                                  <path
+                                                    d="M45.7622 88.9257C44.0767 88.9257 42.6332 88.3284 41.4319 87.1339C40.2306 85.9393 39.6309 84.5051 39.633 82.8311V43.2162H36.5684V37.1216H51.8914V34.0743H70.2791V37.1216H85.6021V43.2162H82.5375V82.8311C82.5375 84.5071 81.9369 85.9424 80.7355 87.1369C79.5342 88.3315 78.0918 88.9277 76.4083 88.9257H45.7622ZM76.4083 43.2162H45.7622V82.8311H76.4083V43.2162ZM51.8914 76.7365H58.0206V49.3108H51.8914V76.7365ZM64.1499 76.7365H70.2791V49.3108H64.1499V76.7365Z"
+                                                    fill="#CF1010"
+                                                    fill-opacity="0.8"
+                                                  />
+                                                </svg>
+                                                <br></br>
+                                                <Modal.Title
+                                                  id="example-custom-modal-styling-title"
+                                                  className="text-center"
+                                                >
+                                                  <h1>Are you sure ?</h1>
+                                                  <p>
+                                                    do you really want to delete
+                                                    this record? this process
+                                                    cannot be undone
+                                                  </p>
+                                                </Modal.Title>
+                                              </div>
+                                              <br />
+
+                                              <Row className="justify-content-center">
+                                                <Col
+                                                  xs={5}
+                                                  className="text-left"
+                                                  style={{
+                                                    cursor: "pointer",
+                                                  }}
+                                                >
+                                                  <button
+                                                    style={{
+                                                      cursor: "pointer",
+                                                      borderRadius: "5px",
+                                                      border:
+                                                        "2px solid rgba(0, 0, 0, 0.50)",
+                                                      background: "#FFF",
+                                                      width: "120px",
+                                                      padding: "12px 12px",
+
+                                                      gap: "10px",
+                                                    }}
+                                                  >
+                                                    Cancel
+                                                  </button>
+                                                </Col>
+                                                <Col
+                                                  xs={5}
+                                                  className="text-center"
+                                                  style={{
+                                                    cursor: "pointer",
+                                                  }}
+                                                >
+                                                  <button
+                                                    style={{
+                                                      cursor: "pointer",
+                                                      borderRadius: "5px",
+                                                      border:
+                                                        "2px solid #CF1010CC",
+                                                      background: "#FFF",
+                                                      width: "120px",
+                                                      padding: "12px 12px",
+                                                      color: "#CF1010CC",
+                                                      gap: "10px",
+                                                      textAlign: "center",
+                                                    }}
+                                                  >
+                                                    Delete
+                                                  </button>
+                                                </Col>
+                                              </Row>
+                                            </Col>
+                                          </Row>
+                                        </Container>
+                                      </div>
+                                    </Modal.Body>
+                                  </Modal>
+                                  {/*Delete Model End*/}
+                                </Row>
+                              </Col>
+                            </Row>
+                          </Container>
+                        </div>
+                      </Modal.Body>
+                    </Modal>
+                    {/*Photo Change Model End*/}
                     <div class="card-body">
                       <div class="text-section">
                         <h5 class="card-title fw-bold">Mr.julius aguirre</h5>
@@ -295,6 +628,7 @@ function ProDetailsProfile() {
                               viewBox="0 0 30 30"
                               fill="none"
                               cursor="pointer"
+                              onClick={handleShow2}
                             >
                               <rect
                                 width="30"
@@ -323,6 +657,7 @@ function ProDetailsProfile() {
                               viewBox="0 0 30 30"
                               fill="none"
                               cursor="pointer"
+                              onClick={handleShow2}
                             >
                               <rect
                                 width="30"
@@ -343,6 +678,7 @@ function ProDetailsProfile() {
                               viewBox="0 0 30 30"
                               fill="none"
                               cursor="pointer"
+                              onClick={handleShow2}
                             >
                               <rect
                                 width="30"
@@ -356,7 +692,10 @@ function ProDetailsProfile() {
                               />
                             </svg>
                             <div class="position-absolute bottom-0 end-0 p-3">
-                              <div class="box d-flex align-items-center">
+                              <div
+                                class="box d-flex align-items-center"
+                                onClick={handleShow3}
+                              >
                                 <svg
                                   xmlns="http://www.w3.org/2000/svg"
                                   width="24"
@@ -378,9 +717,295 @@ function ProDetailsProfile() {
                                   Edit Profile
                                 </p>
                               </div>
+                              {/*Edit personal details Model Start*/}
+                              <Modal
+                                show={show3}
+                                onHide={handleClose3}
+                                aria-labelledby="example-custom-modal-styling-title"
+                              >
+                                <Modal.Header closeButton></Modal.Header>
+
+                                <Modal.Body>
+                                  <Modal.Title
+                                    id="example-custom-modal-styling-title"
+                                    className="text-center"
+                                  >
+                                    <h1>Edit personal details</h1>
+                                    <br></br>
+                                  </Modal.Title>
+                                  <div className="p-7">
+                                    <Container className="mt-2">
+                                      <Row className="mb-3">
+                                        <Form.Group
+                                          as={Col}
+                                          controlId="formGridState"
+                                        >
+                                          <Form.Label>Title*</Form.Label>
+                                          <Form.Select
+                                            placeholder="Choose..."
+                                            style={{
+                                              border: "0 0 1px 0 solid #ced4da", // Set the bottom border style
+                                              borderRadius: "0", // Optional: Set border-radius to 0 if needed
+                                              boxShadow: "none", // Optional: Remove box-shadow
+                                            }}
+                                          >
+                                            <option>A</option>
+                                            <option>B</option>
+                                            <option>C</option>
+                                          </Form.Select>
+                                        </Form.Group>
+
+                                        <Form.Group
+                                          as={Col}
+                                          controlId="formGridCity"
+                                        >
+                                          <Form.Label>First name</Form.Label>
+                                          <Form.Control
+                                            placeholder="Julius"
+                                            style={{
+                                              border: "0 0 1px 0 solid #ced4da", // Set the bottom border style
+                                              borderRadius: "0", // Optional: Set border-radius to 0 if needed
+                                              boxShadow: "none", // Optional: Remove box-shadow
+                                            }}
+                                          />
+                                        </Form.Group>
+
+                                        <Form.Group
+                                          as={Col}
+                                          controlId="formGridZip"
+                                        >
+                                          <Form.Label>Last name</Form.Label>
+                                          <Form.Control
+                                            placeholder="Aguirre"
+                                            style={{
+                                              border: "0 0 1px 0 solid #ced4da", // Set the bottom border style
+                                              borderRadius: "0", // Optional: Set border-radius to 0 if needed
+                                              boxShadow: "none", // Optional: Remove box-shadow
+                                            }}
+                                          />
+                                        </Form.Group>
+                                      </Row>
+
+                                      <Form.Label>Email </Form.Label>
+                                      <Form.Control
+                                        placeholder="juliusaguirre99@gmail.com"
+                                        style={{
+                                          border: "0 0 1px 0 solid #ced4da", // Set the bottom border style
+                                          borderRadius: "0", // Optional: Set border-radius to 0 if needed
+                                          boxShadow: "none", // Optional: Remove box-shadow
+                                        }}
+                                      />
+                                      <br></br>
+                                      <Form.Label>Address </Form.Label>
+                                      <Form.Control
+                                        placeholder="Kandy, Sri lanka"
+                                        style={{
+                                          border: "0 0 1px 0 solid #ced4da", // Set the bottom border style
+                                          borderRadius: "0", // Optional: Set border-radius to 0 if needed
+                                          boxShadow: "none", // Optional: Remove box-shadow
+                                        }}
+                                      />
+                                      <br></br>
+                                      <Form.Label>Telephone Number </Form.Label>
+                                      <Form.Control
+                                        placeholder="0761335825"
+                                        style={{
+                                          border: "0 0 1px 0 solid #ced4da", // Set the bottom border style
+                                          borderRadius: "0", // Optional: Set border-radius to 0 if needed
+                                          boxShadow: "none", // Optional: Remove box-shadow
+                                        }}
+                                      />
+                                      <br></br>
+                                      <Row className="mb-3">
+                                        <Form.Group
+                                          as={Col}
+                                          controlId="formGridState"
+                                        >
+                                          <Form.Label>Gender</Form.Label>
+                                          <Form.Select
+                                            placeholder="Choose..."
+                                            style={{
+                                              border: "0 0 1px 0 solid #ced4da", // Set the bottom border style
+                                              borderRadius: "0", // Optional: Set border-radius to 0 if needed
+                                              boxShadow: "none", // Optional: Remove box-shadow
+                                            }}
+                                          >
+                                            <option>Male</option>
+                                            <option>Female</option>
+                                          </Form.Select>
+                                        </Form.Group>
+
+                                        <Form.Group
+                                          as={Col}
+                                          controlId="formGridZip"
+                                        >
+                                          <Form.Label>Birthday</Form.Label>
+                                          <Form.Control
+                                            type="date"
+                                            style={{
+                                              border: "0 0 1px 0 solid #ced4da", // Set the bottom border style
+                                              borderRadius: "0", // Optional: Set border-radius to 0 if needed
+                                              boxShadow: "none", // Optional: Remove box-shadow
+                                            }}
+                                          />
+                                        </Form.Group>
+                                      </Row>
+
+                                      <Form.Label>Description*</Form.Label>
+                                      <Form.Control
+                                        placeholder="write a small description about yourself"
+                                        style={{
+                                          border: "0 0 1px 0 solid #ced4da", // Set the bottom border style
+                                          borderRadius: "0", // Optional: Set border-radius to 0 if needed
+                                          boxShadow: "none", // Optional: Remove box-shadow
+                                        }}
+                                      />
+                                      <br></br>
+                                      <Form.Label>
+                                        Project Portfolio{" "}
+                                      </Form.Label>
+                                      <Form.Control
+                                        placeholder="google drive link"
+                                        style={{
+                                          border: "0 0 1px 0 solid #ced4da", // Set the bottom border style
+                                          borderRadius: "0", // Optional: Set border-radius to 0 if needed
+                                          boxShadow: "none", // Optional: Remove box-shadow
+                                        }}
+                                      />
+                                    </Container>
+                                  </div>
+                                  <div className="text-center">
+                                    <button
+                                      className="btn  custom-button-reset my-1 my-sm-3 t"
+                                      type="submit"
+                                    >
+                                      Save
+                                    </button>
+                                  </div>
+                                </Modal.Body>
+                              </Modal>
+                              {/*Edit personal details Model End*/}
                             </div>
                           </div>
                         </div>
+                        {/*Social Media Model Start*/}
+                        <Modal
+                          show={show2}
+                          onHide={handleClose2}
+                          aria-labelledby="example-custom-modal-styling-title"
+                        >
+                          <Modal.Header closeButton></Modal.Header>
+
+                          <Modal.Body>
+                            <Modal.Title
+                              id="example-custom-modal-styling-title"
+                              className="text-center"
+                            >
+                              <h1>Social Media</h1>
+                              <p>add social media links</p>
+                            </Modal.Title>
+                            <div className="p-7">
+                              <Container className="mt-2">
+                                <label>Email</label>
+
+                                <InputGroup className="mb-3">
+                                  <InputGroup.Text id="basic-addon1">
+                                    <svg
+                                      xmlns="http://www.w3.org/2000/svg"
+                                      width="22"
+                                      height="18"
+                                      viewBox="0 0 22 18"
+                                      fill="none"
+                                    >
+                                      <path
+                                        d="M22 2.25C22 1.0125 21.01 0 19.8 0H2.2C0.99 0 0 1.0125 0 2.25V15.75C0 16.9875 0.99 18 2.2 18H19.8C21.01 18 22 16.9875 22 15.75V2.25ZM19.8 2.25L11 7.875L2.2 2.25H19.8ZM19.8 15.75H2.2V4.5L11 10.125L19.8 4.5V15.75Z"
+                                        fill="black"
+                                        fill-opacity="0.5"
+                                      />
+                                    </svg>
+                                  </InputGroup.Text>
+                                  <Form.Control
+                                    placeholder="juliusaguirre@gmail.com"
+                                    aria-label="juliusaguirre@gmail.com"
+                                    aria-describedby="basic-addon1"
+                                    className="flex-grow-1" // Use Bootstrap's utility class for flexible width
+                                  />
+                                </InputGroup>
+                                <br></br>
+                                <label style={{ color: "#2A2A72" }}>
+                                  LinkedIn Link
+                                </label>
+
+                                <InputGroup className="mb-3">
+                                  <InputGroup.Text id="basic-addon1">
+                                    <svg
+                                      xmlns="http://www.w3.org/2000/svg"
+                                      width="22"
+                                      height="21"
+                                      viewBox="0 0 22 21"
+                                      fill="none"
+                                    >
+                                      <path
+                                        d="M4.96998 6.69824H0.373047V20.2709H4.96998V6.69824Z"
+                                        fill="#2A2A72"
+                                      />
+                                      <path
+                                        d="M17.4041 6.40395C17.2346 6.38434 17.0545 6.37453 16.8745 6.36472C14.3006 6.26665 12.8495 7.67884 12.3411 8.28686C12.2034 8.45358 12.1398 8.55164 12.1398 8.55164V6.73738H7.74414V20.31H12.1398H12.3411C12.3411 18.9273 12.3411 17.5543 12.3411 16.1715C12.3411 15.4262 12.3411 14.6809 12.3411 13.9356C12.3411 13.0138 12.2669 12.0331 12.7648 11.1897C13.1884 10.4836 13.9511 10.1305 14.809 10.1305C17.3511 10.1305 17.4041 12.2586 17.4041 12.4548C17.4041 12.4646 17.4041 12.4744 17.4041 12.4744V20.3689H22.001V11.5133C22.001 8.483 20.338 6.69815 17.4041 6.40395Z"
+                                        fill="#2A2A72"
+                                      />
+                                      <path
+                                        d="M2.66918 4.94264C4.14334 4.94264 5.33838 3.83619 5.33838 2.47132C5.33838 1.10645 4.14334 0 2.66918 0C1.19503 0 0 1.10645 0 2.47132C0 3.83619 1.19503 4.94264 2.66918 4.94264Z"
+                                        fill="#2A2A72"
+                                      />
+                                    </svg>
+                                  </InputGroup.Text>
+                                  <Form.Control
+                                    placeholder="/in/juliusaguirre"
+                                    aria-label="/in/juliusaguirre"
+                                    aria-describedby="basic-addon1"
+                                    className="flex-grow-1" // Use Bootstrap's utility class for flexible width
+                                  />
+                                </InputGroup>
+                                <br></br>
+                                <label style={{ color: "#2A2A72" }}>
+                                  LinkedIn Link
+                                </label>
+
+                                <InputGroup className="mb-3">
+                                  <InputGroup.Text id="basic-addon1">
+                                    <svg
+                                      xmlns="http://www.w3.org/2000/svg"
+                                      width="22"
+                                      height="22"
+                                      viewBox="0 0 22 22"
+                                      fill="none"
+                                    >
+                                      <path
+                                        d="M11.9222 17.5444C12.0452 17.667 12.1428 17.8127 12.2095 17.9731C12.2761 18.1335 12.3104 18.3054 12.3104 18.4791C12.3104 18.6528 12.2761 18.8247 12.2095 18.9851C12.1428 19.1455 12.0452 19.2912 11.9222 19.4138L11.2689 20.067C10.0309 21.3047 8.35189 22 6.60115 22C4.85042 22 3.17139 21.3047 1.93343 20.067C0.695477 18.8292 0 17.1506 0 15.4002C0 13.6498 0.695477 11.9711 1.93343 10.7334L4.58625 8.0822C5.7757 6.89004 7.37607 6.1977 9.05954 6.147C10.743 6.0963 12.3822 6.69107 13.6412 7.80949C13.7712 7.92502 13.8772 8.06501 13.9531 8.22147C14.0289 8.37794 14.0732 8.54781 14.0835 8.7214C14.0937 8.89498 14.0696 9.06888 14.0126 9.23316C13.9556 9.39744 13.8668 9.54888 13.7512 9.67885C13.6357 9.80881 13.4956 9.91475 13.3391 9.99061C13.1827 10.0665 13.0127 10.1108 12.8391 10.121C12.6655 10.1312 12.4916 10.1071 12.3273 10.0501C12.1629 9.99313 12.0115 9.90433 11.8815 9.78881C11.1265 9.1184 10.1438 8.76174 9.13443 8.79179C8.12508 8.82184 7.16536 9.23632 6.45157 9.95045L3.80096 12.5983C3.0583 13.3408 2.64108 14.3479 2.64108 15.398C2.64108 16.448 3.0583 17.4551 3.80096 18.1976C4.54362 18.9401 5.55088 19.3572 6.60115 19.3572C7.65143 19.3572 8.65869 18.9401 9.40134 18.1976L10.0546 17.5444C10.1772 17.4217 10.3228 17.3244 10.483 17.258C10.6432 17.1916 10.815 17.1574 10.9884 17.1574C11.1619 17.1574 11.3336 17.1916 11.4938 17.258C11.654 17.3244 11.7996 17.4217 11.9222 17.5444ZM20.0698 1.92983C18.8308 0.694024 17.1522 0 15.4021 0C13.652 0 11.9733 0.694024 10.7344 1.92983L10.081 2.583C9.8331 2.83089 9.69381 3.16711 9.69381 3.51768C9.69381 3.86825 9.8331 4.20446 10.081 4.45236C10.329 4.70025 10.6653 4.83951 11.0159 4.83951C11.3666 4.83951 11.7028 4.70025 11.9508 4.45236L12.6041 3.79918C13.3467 3.05667 14.354 2.63954 15.4043 2.63954C16.4545 2.63954 17.4618 3.05667 18.2045 3.79918C18.9471 4.54169 19.3643 5.54875 19.3643 6.59881C19.3643 7.64888 18.9471 8.65594 18.2045 9.39845L15.5527 12.0507C14.8383 12.7646 13.8781 13.1784 12.8685 13.2077C11.8589 13.2369 10.8763 12.8793 10.1217 12.208C9.99175 12.0925 9.84027 12.0037 9.67596 11.9467C9.51165 11.8897 9.33772 11.8656 9.1641 11.8758C8.99048 11.886 8.82057 11.9303 8.66407 12.0062C8.50758 12.082 8.36756 12.188 8.25201 12.3179C8.13647 12.4479 8.04765 12.5993 7.99065 12.7636C7.93364 12.9279 7.90956 13.1018 7.91977 13.2754C7.92998 13.449 7.97429 13.6188 8.05017 13.7753C8.12605 13.9318 8.23201 14.0718 8.36199 14.1873C9.62019 15.3055 11.2582 15.9006 12.9409 15.8509C14.6236 15.8013 16.2237 15.1105 17.4137 13.9201L20.0665 11.2689C21.304 10.0305 21.9994 8.35171 22 6.60115C22.0006 4.85058 21.3064 3.17132 20.0698 1.93203V1.92983Z"
+                                        fill="#2A2A72"
+                                      />
+                                    </svg>
+                                  </InputGroup.Text>
+                                  <Form.Control
+                                    placeholder="/juliusaguirre.com"
+                                    aria-label="/juliusaguirre.com"
+                                    aria-describedby="basic-addon1"
+                                    className="flex-grow-1" // Use Bootstrap's utility class for flexible width
+                                  />
+                                </InputGroup>
+                              </Container>
+                            </div>
+                            <div className="text-center">
+                              <button
+                                className="btn  custom-button-reset my-1 my-sm-3 t"
+                                type="submit"
+                              >
+                                Save
+                              </button>
+                            </div>
+                          </Modal.Body>
+                        </Modal>
+                        {/*Social Media Model End*/}
                       </div>
                     </div>
                   </div>
@@ -395,6 +1020,7 @@ function ProDetailsProfile() {
                         viewBox="0 0 15 15"
                         fill="none"
                         cursor="pointer"
+                        onClick={handleShow9}
                       >
                         <path
                           d="M15 8.4375H8.4375V15H6.5625V8.4375H0V6.5625H6.5625V0H8.4375V6.5625H15V8.4375Z"
@@ -403,6 +1029,131 @@ function ProDetailsProfile() {
                         />
                       </svg>
                     </h6>
+                    {/*Company Model Start*/}
+                    <Modal
+                      show={show9}
+                      onHide={handleClose9}
+                      aria-labelledby="example-custom-modal-styling-title"
+                    >
+                      <Modal.Header closeButton></Modal.Header>
+
+                      <Modal.Body>
+                        <Modal.Title
+                          id="example-custom-modal-styling-title"
+                          className="text-center"
+                        >
+                          <h1>Company details </h1>
+                          <p>Add your company details</p>
+                        </Modal.Title>
+                        <div className="p-7">
+                          <Container className="mt-2">
+                            <div className="text-center">
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="107"
+                                height="107"
+                                viewBox="0 0 107 107"
+                                fill="none"
+                              >
+                                <circle
+                                  cx="53.5"
+                                  cy="53.5"
+                                  r="53.5"
+                                  fill="black"
+                                  fill-opacity="0.11"
+                                />
+                                <path
+                                  opacity="0.2"
+                                  d="M77.4051 36.3444V65.9759L67.7626 56.3334C67.3985 55.9695 66.9047 55.765 66.3898 55.765C65.875 55.765 65.3812 55.9695 65.017 56.3334L58.7877 62.5627L46.7346 50.5071C46.5543 50.3266 46.3401 50.1833 46.1043 50.0856C45.8685 49.9879 45.6158 49.9375 45.3606 49.9375C45.1054 49.9375 44.8527 49.9879 44.6169 50.0856C44.3811 50.1833 44.1669 50.3266 43.9866 50.5071L30.7949 63.7012V36.3444C30.7949 35.8294 30.9995 35.3354 31.3637 34.9712C31.728 34.607 32.2219 34.4023 32.737 34.4023H75.463C75.9781 34.4023 76.4721 34.607 76.8363 34.9712C77.2005 35.3354 77.4051 35.8294 77.4051 36.3444Z"
+                                  fill="black"
+                                  fill-opacity="0.5"
+                                />
+                                <path
+                                  d="M75.4637 32.46H32.7377C31.7075 32.46 30.7196 32.8692 29.9912 33.5976C29.2627 34.326 28.8535 35.314 28.8535 36.3441V71.3018C28.8535 72.3319 29.2627 73.3199 29.9912 74.0483C30.7196 74.7767 31.7075 75.186 32.7377 75.186H75.4637C76.4939 75.186 77.4818 74.7767 78.2102 74.0483C78.9387 73.3199 79.3479 72.3319 79.3479 71.3018V36.3441C79.3479 35.314 78.9387 34.326 78.2102 33.5976C77.4818 32.8692 76.4939 32.46 75.4637 32.46ZM75.4637 36.3441V61.2879L69.1349 54.9615C68.7742 54.6007 68.346 54.3146 67.8747 54.1193C67.4034 53.924 66.8982 53.8236 66.3881 53.8236C65.8779 53.8236 65.3728 53.924 64.9015 54.1193C64.4302 54.3146 64.0019 54.6007 63.6412 54.9615L58.786 59.8167L48.1045 49.1352C47.3761 48.4074 46.3886 47.9985 45.3589 47.9985C44.3292 47.9985 43.3416 48.4074 42.6132 49.1352L32.7377 59.0108V36.3441H75.4637ZM32.7377 64.5045L45.3613 51.8809L64.7822 71.3018H32.7377V64.5045ZM75.4637 71.3018H70.2759L61.5365 62.5624L66.3917 57.7071L75.4637 66.7816V71.3018ZM57.9849 47.0256C57.9849 46.4495 58.1557 45.8863 58.4758 45.4072C58.7959 44.9281 59.2509 44.5547 59.7832 44.3343C60.3155 44.1138 60.9013 44.0561 61.4664 44.1685C62.0314 44.2809 62.5505 44.5583 62.9579 44.9657C63.3653 45.3732 63.6428 45.8922 63.7552 46.4573C63.8676 47.0224 63.8099 47.6082 63.5894 48.1405C63.3689 48.6728 62.9955 49.1277 62.5165 49.4478C62.0374 49.7679 61.4742 49.9388 60.898 49.9388C60.1254 49.9388 59.3844 49.6319 58.8381 49.0855C58.2918 48.5392 57.9849 47.7983 57.9849 47.0256Z"
+                                  fill="black"
+                                  fill-opacity="0.5"
+                                />
+                              </svg>
+                            </div>
+                            <br></br>
+                            <Form.Label>Company Name* </Form.Label>
+                            <Form.Control
+                              placeholder="add company name"
+                              style={{
+                                border: "0 0 1px 0 solid #ced4da", // Set the bottom border style
+                                borderRadius: "0", // Optional: Set border-radius to 0 if needed
+                                boxShadow: "none", // Optional: Remove box-shadow
+                              }}
+                            />
+                            <br></br>
+
+                            <Form.Label>Company type*</Form.Label>
+                            <Form.Select
+                              placeholder="Select employment type"
+                              style={{
+                                border: "0 0 1px 0 solid #ced4da", // Set the bottom border style
+                                borderRadius: "0", // Optional: Set border-radius to 0 if needed
+                                boxShadow: "none", // Optional: Remove box-shadow
+                              }}
+                            >
+                              <option>Select company type</option>
+                              <option>A</option>
+                              <option>B</option>
+                              <option>C</option>
+                            </Form.Select>
+                            <br></br>
+                            <Form.Label>Industry* </Form.Label>
+                            <Form.Select
+                              placeholder="Select employment type"
+                              style={{
+                                border: "0 0 1px 0 solid #ced4da", // Set the bottom border style
+                                borderRadius: "0", // Optional: Set border-radius to 0 if needed
+                                boxShadow: "none", // Optional: Remove box-shadow
+                              }}
+                            >
+                              <option>Select Industry type</option>
+                              <option>A</option>
+                              <option>B</option>
+                              <option>C</option>
+                            </Form.Select>
+
+                            <br></br>
+
+                            <Form.Label>About Company*</Form.Label>
+                            <Form.Control
+                              placeholder="describe about your company"
+                              style={{
+                                border: "0 0 1px 0 solid #ced4da", // Set the bottom border style
+                                borderRadius: "0", // Optional: Set border-radius to 0 if needed
+                                boxShadow: "none", // Optional: Remove box-shadow
+                              }}
+                            />
+
+                            <br></br>
+                            <Form.Label>Website link*</Form.Label>
+                            <Form.Control
+                              placeholder="add company website link"
+                              style={{
+                                border: "0 0 1px 0 solid #ced4da", // Set the bottom border style
+                                borderRadius: "0", // Optional: Set border-radius to 0 if needed
+                                boxShadow: "none", // Optional: Remove box-shadow
+                              }}
+                            />
+
+                            <br></br>
+                          </Container>
+                        </div>
+                        <div className="text-center">
+                          <button
+                            className="btn  custom-button-reset my-1 my-sm-3 t"
+                            type="submit"
+                          >
+                            Save
+                          </button>
+                        </div>
+                      </Modal.Body>
+                    </Modal>
+                    {/*Company Model End*/}
                   </div>
                   <hr />
                   <div className="d-flex justify-content-between mt-4">
@@ -416,6 +1167,7 @@ function ProDetailsProfile() {
                         viewBox="0 0 15 15"
                         fill="none"
                         cursor="pointer"
+                        onClick={handleShow4}
                       >
                         <path
                           d="M15 8.4375H8.4375V15H6.5625V8.4375H0V6.5625H6.5625V0H8.4375V6.5625H15V8.4375Z"
@@ -424,6 +1176,94 @@ function ProDetailsProfile() {
                         />
                       </svg>
                     </h6>
+                    {/*Academic qualification Model Start*/}
+                    <Modal
+                      show={show4}
+                      onHide={handleClose4}
+                      aria-labelledby="example-custom-modal-styling-title"
+                    >
+                      <Modal.Header closeButton></Modal.Header>
+
+                      <Modal.Body>
+                        <Modal.Title
+                          id="example-custom-modal-styling-title"
+                          className="text-center"
+                        >
+                          <h1>Academic Qualification</h1>
+                          <p>Add New Academic Qualification</p>
+                        </Modal.Title>
+                        <div className="p-7">
+                          <Container className="mt-2">
+                            <Form.Label>Institute* </Form.Label>
+                            <Form.Control
+                              placeholder="add institute name"
+                              style={{
+                                border: "0 0 1px 0 solid #ced4da", // Set the bottom border style
+                                borderRadius: "0", // Optional: Set border-radius to 0 if needed
+                                boxShadow: "none", // Optional: Remove box-shadow
+                              }}
+                            />
+                            <br></br>
+                            <Form.Label>Degree / Course* </Form.Label>
+                            <Form.Control
+                              placeholder="add degree / course name"
+                              style={{
+                                border: "0 0 1px 0 solid #ced4da", // Set the bottom border style
+                                borderRadius: "0", // Optional: Set border-radius to 0 if needed
+                                boxShadow: "none", // Optional: Remove box-shadow
+                              }}
+                            />
+
+                            <br></br>
+
+                            <Form.Group as={Col} controlId="formGridZip">
+                              <Form.Label>Start date*</Form.Label>
+                              <Form.Control
+                                type="date"
+                                style={{
+                                  border: "0 0 1px 0 solid #ced4da", // Set the bottom border style
+                                  borderRadius: "0", // Optional: Set border-radius to 0 if needed
+                                  boxShadow: "none", // Optional: Remove box-shadow
+                                }}
+                              />
+                            </Form.Group>
+                            <br></br>
+                            <Form.Group as={Col} controlId="formGridZip">
+                              <Form.Label>End date (or expected)*</Form.Label>
+                              <Form.Control
+                                type="date"
+                                style={{
+                                  border: "0 0 1px 0 solid #ced4da", // Set the bottom border style
+                                  borderRadius: "0", // Optional: Set border-radius to 0 if needed
+                                  boxShadow: "none", // Optional: Remove box-shadow
+                                }}
+                              />
+                            </Form.Group>
+                            <br></br>
+                            <Form.Label>Grade*</Form.Label>
+                            <Form.Control
+                              placeholder="add grade"
+                              style={{
+                                border: "0 0 1px 0 solid #ced4da", // Set the bottom border style
+                                borderRadius: "0", // Optional: Set border-radius to 0 if needed
+                                boxShadow: "none", // Optional: Remove box-shadow
+                              }}
+                            />
+                            <br></br>
+                          </Container>
+                        </div>
+                        <div className="text-center">
+                          <button
+                            className="btn  custom-button-reset my-1 my-sm-3 t"
+                            type="submit"
+                            onClick={handleShow}
+                          >
+                            Save
+                          </button>
+                        </div>
+                      </Modal.Body>
+                    </Modal>
+                    {/*Academic qualification Model End*/}
                   </div>
                   <hr />
                   <div className="d-flex justify-content-between mt-4">
@@ -437,6 +1277,7 @@ function ProDetailsProfile() {
                         viewBox="0 0 15 15"
                         fill="none"
                         cursor="pointer"
+                        onClick={handleShow7}
                       >
                         <path
                           d="M15 8.4375H8.4375V15H6.5625V8.4375H0V6.5625H6.5625V0H8.4375V6.5625H15V8.4375Z"
@@ -445,6 +1286,128 @@ function ProDetailsProfile() {
                         />
                       </svg>
                     </h6>
+                    {/*Professional Experience  Model Start*/}
+                    <Modal
+                      show={show7}
+                      onHide={handleClose7}
+                      aria-labelledby="example-custom-modal-styling-title"
+                    >
+                      <Modal.Header closeButton></Modal.Header>
+
+                      <Modal.Body>
+                        <Modal.Title
+                          id="example-custom-modal-styling-title"
+                          className="text-center"
+                        >
+                          <h1>Professional Experience </h1>
+                          <p>Add New Professional Experience </p>
+                        </Modal.Title>
+                        <div className="p-7">
+                          <Container className="mt-2">
+                            <Form.Label>position* </Form.Label>
+                            <Form.Control
+                              placeholder="add position"
+                              style={{
+                                border: "0 0 1px 0 solid #ced4da", // Set the bottom border style
+                                borderRadius: "0", // Optional: Set border-radius to 0 if needed
+                                boxShadow: "none", // Optional: Remove box-shadow
+                              }}
+                            />
+                            <br></br>
+
+                            <Form.Label>Employment type*</Form.Label>
+                            <Form.Select
+                              placeholder="Select employment type"
+                              style={{
+                                border: "0 0 1px 0 solid #ced4da", // Set the bottom border style
+                                borderRadius: "0", // Optional: Set border-radius to 0 if needed
+                                boxShadow: "none", // Optional: Remove box-shadow
+                              }}
+                            >
+                              <option>Select employment type</option>
+                              <option>Full time</option>
+                              <option>Part time</option>
+                              <option>Internship</option>
+                              <option>Freelance</option>
+                              <option>Contract</option>
+                            </Form.Select>
+
+                            <br></br>
+                            <Form.Label>Company name* </Form.Label>
+                            <Form.Control
+                              placeholder="add Company name"
+                              style={{
+                                border: "0 0 1px 0 solid #ced4da", // Set the bottom border style
+                                borderRadius: "0", // Optional: Set border-radius to 0 if needed
+                                boxShadow: "none", // Optional: Remove box-shadow
+                              }}
+                            />
+
+                            <br></br>
+                            <Form.Label>Location type* </Form.Label>
+                            <Form.Select
+                              placeholder="select location type"
+                              style={{
+                                border: "0 0 1px 0 solid #ced4da", // Set the bottom border style
+                                borderRadius: "0", // Optional: Set border-radius to 0 if needed
+                                boxShadow: "none", // Optional: Remove box-shadow
+                              }}
+                            >
+                              <option>select location type</option>
+                              <option>Onsite</option>
+                              <option>Hybrid</option>
+                              <option>Remote</option>
+                            </Form.Select>
+
+                            <br></br>
+                            <Form.Label>Start date*</Form.Label>
+                            <Form.Control
+                              placeholder="Start date of degree"
+                              type="date"
+                              style={{
+                                border: "0 0 1px 0 solid #ced4da", // Set the bottom border style
+                                borderRadius: "0", // Optional: Set border-radius to 0 if needed
+                                boxShadow: "none", // Optional: Remove box-shadow
+                              }}
+                            />
+
+                            <br></br>
+                            <Form.Group as={Col} controlId="formGridZip">
+                              <Form.Label>End date(or expected)*</Form.Label>
+                              <Form.Control
+                                type="date"
+                                style={{
+                                  border: "0 0 1px 0 solid #ced4da", // Set the bottom border style
+                                  borderRadius: "0", // Optional: Set border-radius to 0 if needed
+                                  boxShadow: "none", // Optional: Remove box-shadow
+                                }}
+                              />
+                            </Form.Group>
+                            <br></br>
+                            <Form.Label>Skills</Form.Label>
+                            <Form.Control
+                              placeholder="describe about skills gathered"
+                              style={{
+                                border: "0 0 1px 0 solid #ced4da", // Set the bottom border style
+                                borderRadius: "0", // Optional: Set border-radius to 0 if needed
+                                boxShadow: "none", // Optional: Remove box-shadow
+                              }}
+                            />
+
+                            <br></br>
+                          </Container>
+                        </div>
+                        <div className="text-center">
+                          <button
+                            className="btn  custom-button-reset my-1 my-sm-3 t"
+                            type="submit"
+                          >
+                            Save
+                          </button>
+                        </div>
+                      </Modal.Body>
+                    </Modal>
+                    {/*Professional Experience  Model End*/}
                   </div>
                   <hr />
                   <div className="d-flex justify-content-between mt-4">
@@ -458,6 +1421,7 @@ function ProDetailsProfile() {
                         viewBox="0 0 15 15"
                         fill="none"
                         cursor="pointer"
+                        onClick={handleShow6}
                       >
                         <path
                           d="M15 8.4375H8.4375V15H6.5625V8.4375H0V6.5625H6.5625V0H8.4375V6.5625H15V8.4375Z"
@@ -466,6 +1430,91 @@ function ProDetailsProfile() {
                         />
                       </svg>
                     </h6>
+                    {/*License and Certifications Model Start*/}
+                    <Modal
+                      show={show6}
+                      onHide={handleClose6}
+                      aria-labelledby="example-custom-modal-styling-title"
+                    >
+                      <Modal.Header closeButton></Modal.Header>
+
+                      <Modal.Body>
+                        <Modal.Title
+                          id="example-custom-modal-styling-title"
+                          className="text-center"
+                        >
+                          <h1>License and Certifications</h1>
+                          <p>Add New License and Certifications</p>
+                        </Modal.Title>
+                        <div className="p-7">
+                          <Container className="mt-2">
+                            <Form.Label>certification name* </Form.Label>
+                            <Form.Control
+                              placeholder="add certification name"
+                              style={{
+                                border: "0 0 1px 0 solid #ced4da", // Set the bottom border style
+                                borderRadius: "0", // Optional: Set border-radius to 0 if needed
+                                boxShadow: "none", // Optional: Remove box-shadow
+                              }}
+                            />
+                            <br></br>
+                            <Form.Label>Offered Institute* </Form.Label>
+                            <Form.Control
+                              placeholder="add offered institute name"
+                              style={{
+                                border: "0 0 1px 0 solid #ced4da", // Set the bottom border style
+                                borderRadius: "0", // Optional: Set border-radius to 0 if needed
+                                boxShadow: "none", // Optional: Remove box-shadow
+                              }}
+                            />
+
+                            <br></br>
+                            <Form.Label>license Number </Form.Label>
+                            <Form.Control
+                              placeholder="add license number"
+                              style={{
+                                border: "0 0 1px 0 solid #ced4da", // Set the bottom border style
+                                borderRadius: "0", // Optional: Set border-radius to 0 if needed
+                                boxShadow: "none", // Optional: Remove box-shadow
+                              }}
+                            />
+
+                            <br></br>
+                            <Form.Label>Validity Period* </Form.Label>
+                            <Form.Control
+                              placeholder="Add validity period"
+                              style={{
+                                border: "0 0 1px 0 solid #ced4da", // Set the bottom border style
+                                borderRadius: "0", // Optional: Set border-radius to 0 if needed
+                                boxShadow: "none", // Optional: Remove box-shadow
+                              }}
+                            />
+
+                            <br></br>
+                            <Form.Group as={Col} controlId="formGridZip">
+                              <Form.Label>issued date*</Form.Label>
+                              <Form.Control
+                                type="date"
+                                style={{
+                                  border: "0 0 1px 0 solid #ced4da", // Set the bottom border style
+                                  borderRadius: "0", // Optional: Set border-radius to 0 if needed
+                                  boxShadow: "none", // Optional: Remove box-shadow
+                                }}
+                              />
+                            </Form.Group>
+                          </Container>
+                        </div>
+                        <div className="text-center">
+                          <button
+                            className="btn  custom-button-reset my-1 my-sm-3 t"
+                            type="submit"
+                          >
+                            Save
+                          </button>
+                        </div>
+                      </Modal.Body>
+                    </Modal>
+                    {/*License and Certifications Model End*/}
                   </div>
                   <hr />
                   <div className="d-flex justify-content-between mt-4">
@@ -479,6 +1528,7 @@ function ProDetailsProfile() {
                         viewBox="0 0 15 15"
                         fill="none"
                         cursor="pointer"
+                        onClick={handleShow8}
                       >
                         <path
                           d="M15 8.4375H8.4375V15H6.5625V8.4375H0V6.5625H6.5625V0H8.4375V6.5625H15V8.4375Z"
@@ -487,6 +1537,106 @@ function ProDetailsProfile() {
                         />
                       </svg>
                     </h6>
+                    {/*volunteering Model Start*/}
+                    <Modal
+                      show={show8}
+                      onHide={handleClose8}
+                      aria-labelledby="example-custom-modal-styling-title"
+                    >
+                      <Modal.Header closeButton></Modal.Header>
+
+                      <Modal.Body>
+                        <Modal.Title
+                          id="example-custom-modal-styling-title"
+                          className="text-center"
+                        >
+                          <h1>Volunteering</h1>
+                          <p>Add new volunteering experience</p>
+                        </Modal.Title>
+                        <div className="p-7">
+                          <Container className="mt-2">
+                            <Form.Label>organization* </Form.Label>
+                            <Form.Control
+                              placeholder="add organization name"
+                              style={{
+                                border: "0 0 1px 0 solid #ced4da", // Set the bottom border style
+                                borderRadius: "0", // Optional: Set border-radius to 0 if needed
+                                boxShadow: "none", // Optional: Remove box-shadow
+                              }}
+                            />
+                            <br></br>
+
+                            <Form.Label>Role*</Form.Label>
+                            <Form.Control
+                              placeholder="add role"
+                              style={{
+                                border: "0 0 1px 0 solid #ced4da", // Set the bottom border style
+                                borderRadius: "0", // Optional: Set border-radius to 0 if needed
+                                boxShadow: "none", // Optional: Remove box-shadow
+                              }}
+                            />
+
+                            <br></br>
+                            <Form.Label>Project name* </Form.Label>
+                            <Form.Control
+                              placeholder="add project name"
+                              style={{
+                                border: "0 0 1px 0 solid #ced4da", // Set the bottom border style
+                                borderRadius: "0", // Optional: Set border-radius to 0 if needed
+                                boxShadow: "none", // Optional: Remove box-shadow
+                              }}
+                            />
+
+                            <br></br>
+
+                            <Form.Label>Start date*</Form.Label>
+                            <Form.Control
+                              placeholder="Start date of degree"
+                              type="date"
+                              style={{
+                                border: "0 0 1px 0 solid #ced4da", // Set the bottom border style
+                                borderRadius: "0", // Optional: Set border-radius to 0 if needed
+                                boxShadow: "none", // Optional: Remove box-shadow
+                              }}
+                            />
+
+                            <br></br>
+                            <Form.Group as={Col} controlId="formGridZip">
+                              <Form.Label>End date(or expected)*</Form.Label>
+                              <Form.Control
+                                type="date"
+                                style={{
+                                  border: "0 0 1px 0 solid #ced4da", // Set the bottom border style
+                                  borderRadius: "0", // Optional: Set border-radius to 0 if needed
+                                  boxShadow: "none", // Optional: Remove box-shadow
+                                }}
+                              />
+                            </Form.Group>
+                            <br></br>
+                            <Form.Label>Description*</Form.Label>
+                            <Form.Control
+                              placeholder="add short description about your experence"
+                              style={{
+                                border: "0 0 1px 0 solid #ced4da", // Set the bottom border style
+                                borderRadius: "0", // Optional: Set border-radius to 0 if needed
+                                boxShadow: "none", // Optional: Remove box-shadow
+                              }}
+                            />
+
+                            <br></br>
+                          </Container>
+                        </div>
+                        <div className="text-center">
+                          <button
+                            className="btn  custom-button-reset my-1 my-sm-3 t"
+                            type="submit"
+                          >
+                            Save
+                          </button>
+                        </div>
+                      </Modal.Body>
+                    </Modal>
+                    {/*volunteering Model End*/}
                   </div>
                   <hr />
                   <br></br>
