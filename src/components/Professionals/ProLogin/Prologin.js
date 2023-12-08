@@ -37,7 +37,6 @@ function Prologin() {
       <section className="">
         <div className="container-fluid">
           <div className="row">
-          
             <div className="col-lg-5 vh-100 custom-bg d-flex align-items-center justify-content-center">
               <div className="vh-100 text-center">
                 <img
@@ -129,7 +128,6 @@ function Prologin() {
                         {showPassword ? <HiOutlineEyeOff /> : <HiOutlineEye />}
                       </InputGroup.Text>
                     </InputGroup>
-                  
 
                     {confirmPasswordMatch() ? (
                       <p></p>
